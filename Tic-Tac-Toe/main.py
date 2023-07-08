@@ -1,6 +1,7 @@
+#This is a basic Tic-Tac-Toe game with an AI opponent to play against
 import random
 
-# Function to print the tic-tac-toe board
+#Function to print the tic-tac-toe board
 def print_board(board):
     print("---------")
     for i in range(3):
@@ -10,7 +11,7 @@ def print_board(board):
             print("|", end=" ")
         print("\n---------")
 
-# Function to check if a player has won
+#Check if player has won
 def check_winner(board, player):
     winning_combinations = [
         [0, 1, 2], [3, 4, 5], [6, 7, 8],  # rows
@@ -22,16 +23,16 @@ def check_winner(board, player):
             return True
     return False
 
-# Function to make a player's move
+#Make player's move
 def make_move(board, position, player):
     if board[position] == " ":
         board[position] = player
         return True
     return False
 
-# Function to get the AI's move
+#Get the AI's move
 def get_ai_move(board):
-    # Check for a winning move
+    #Check for a winning move
     for i in range(9):
         if board[i] == " ":
             board_copy = board[:]
@@ -39,7 +40,7 @@ def get_ai_move(board):
             if check_winner(board_copy, "O"):
                 return i
 
-    # Check for a blocking move
+    #Check for a blocking move
     for i in range(9):
         if board[i] == " ":
             board_copy = board[:]
@@ -47,22 +48,22 @@ def get_ai_move(board):
             if check_winner(board_copy, "X"):
                 return i
 
-    # Choose a random move
+    #Choose a random move
     empty_positions = [i for i in range(9) if board[i] == " "]
     return random.choice(empty_positions)
 
-# Function to check if the board is full
+#Check if board is full
 def is_board_full(board):
     return " " not in board
 
-# Main game loop
+#Main game loop
 def play_game():
     board = [" "] * 9
     print("Welcome to Tic-Tac-Toe!")
     print_board(board)
 
     while True:
-        # Player's move
+        #Player's move
         position = int(input("Enter your move (0-8): "))
         if not make_move(board, position, "X"):
             print("Invalid move! Try again.")
@@ -78,7 +79,7 @@ def play_game():
             print("It's a tie!")
             break
 
-        # AI's move
+        #AI's move
         print("AI's turn...")
         position = get_ai_move(board)
         make_move(board, position, "O")
@@ -93,5 +94,5 @@ def play_game():
             print("It's a tie!")
             break
 
-# Start the game
+#Start the game
 play_game()
