@@ -1,0 +1,1 @@
+This is a simple Snake game written in Python using Turtle Graphics. It has functionality to keep score, pause the game, continue, reset, and quit from within the game window.
